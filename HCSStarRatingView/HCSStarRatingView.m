@@ -81,6 +81,7 @@
     if (_maximumValue != maximumValue) {
         _maximumValue = maximumValue;
         [self setNeedsDisplay];
+        [self invalidateIntrinsicContentSize];
     }
 }
 
@@ -200,6 +201,13 @@
 
 - (BOOL)canBecomeFirstResponder {
     return YES;
+}
+
+#pragma mark - Intrinsic Content Size
+
+- (CGSize)intrinsicContentSize {
+    CGFloat height = 44.f;
+    return CGSizeMake(self.maximumValue * height + (self.maximumValue+1) * self.spacing, height);
 }
 
 @end
