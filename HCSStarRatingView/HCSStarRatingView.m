@@ -102,6 +102,13 @@
     [self setNeedsDisplay];
 }
 
+- (void)setAllowsHalfStars:(BOOL)allowsHalfStars {
+    if (_allowsHalfStars != allowsHalfStars) {
+        _allowsHalfStars = allowsHalfStars;
+        [self setNeedsDisplay];
+    }
+}
+
 #pragma mark - Drawing
 
 - (void)_drawStarWithFrame:(CGRect)frame tintColor:(UIColor*)tintColor highlighted:(BOOL)highlighted {
