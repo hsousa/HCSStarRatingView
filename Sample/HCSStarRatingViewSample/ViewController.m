@@ -21,7 +21,7 @@
     HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
     starRatingView.maximumValue = 10;
     starRatingView.minimumValue = 0;
-    starRatingView.value = 0;
+    starRatingView.value = 4.5f;
     starRatingView.tintColor = [UIColor redColor];
     [starRatingView addTarget:self action:@selector(didChangeValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:starRatingView];
@@ -33,7 +33,7 @@
 }
 
 - (IBAction)didChangeValue:(HCSStarRatingView *)sender {
-    NSLog(@"Changed rating to %lu", sender.value);
+    NSLog(@"Changed rating to %.1f", sender.value);
 }
 
 @end

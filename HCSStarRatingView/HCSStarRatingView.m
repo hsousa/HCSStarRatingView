@@ -25,7 +25,7 @@
 @implementation HCSStarRatingView {
     NSUInteger _minimumValue;
     NSUInteger _maximumValue;
-    NSUInteger _value;
+    CGFloat _value;
     NSUInteger _previousValue;
 }
 
@@ -85,11 +85,11 @@
     }
 }
 
-- (NSUInteger)value {
+- (CGFloat)value {
     return MIN(MAX(_value, _minimumValue), _maximumValue);
 }
 
-- (void)setValue:(NSUInteger)value {
+- (void)setValue:(CGFloat)value {
     if (_value != value) {
         _value = value;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -130,18 +130,47 @@
     [starShapePath stroke];
 }
 
+- (void)_drawHalfStarWithFrame:(CGRect)frame tintcolor:(UIColor *)tintColor highlighted:(BOOL)highlighted {
+    UIBezierPath* starShapePath = UIBezierPath.bezierPath;
+    [starShapePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
+    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.37292 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.37309 * CGRectGetHeight(frame))];
+    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.02500 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.39112 * CGRectGetHeight(frame))];
+    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.30504 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.62908 * CGRectGetHeight(frame))];
+    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.20642 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.97500 * CGRectGetHeight(frame))];
+    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.78265 * CGRectGetHeight(frame))];
+    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
+    [starShapePath closePath];
+    starShapePath.miterLimit = 4;
+    
+    if (highlighted) {
+        [tintColor setFill];
+        [starShapePath fill];
+    }
+    
+    [tintColor setStroke];
+    starShapePath.lineWidth = 1;
+    [starShapePath stroke];
+}
+
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, self.backgroundColor.CGColor);
     CGContextFillRect(context, rect);
     
-    CGFloat availableWidth = rect.size.width - (self.spacing * (self.maximumValue + 1));
-    CGFloat cellWidth = (availableWidth / self.maximumValue);
+    CGFloat availableWidth = rect.size.width - (_spacing * (_maximumValue + 1));
+    CGFloat cellWidth = (availableWidth / _maximumValue);
     CGFloat starSide = (cellWidth <= rect.size.height) ? cellWidth : rect.size.height;
-    for (int idx = 0; idx < self.maximumValue; idx++) {
-        CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + self.spacing*(idx+1), rect.size.height/2);
+    for (int idx = 0; idx < _maximumValue; idx++) {
+        CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*(idx+1), rect.size.height/2);
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
-        [self _drawStarWithFrame:frame tintColor:[self tintColor] highlighted:(idx+1 <= self.value)];
+        BOOL highlighted = (idx+1 <= ceilf(_value));
+        BOOL halfStar = highlighted ? (idx+1 > _value) : NO;
+        if (halfStar && _allowsHalfStars) {
+            [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:NO];
+            [self _drawHalfStarWithFrame:frame tintcolor:self.tintColor highlighted:highlighted];
+        } else {
+            [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:highlighted];
+        }
     }
 }
 
@@ -193,7 +222,12 @@
 - (void)_handleTouch:(UITouch *)touch {
     CGFloat cellWidth = self.bounds.size.width / _maximumValue;
     CGPoint location = [touch locationInView:self];
-    _value = ceilf(location.x / cellWidth);
+    CGFloat value = location.x / cellWidth;
+    if (_allowsHalfStars && value+.5f < ceilf(value)) {
+        _value = floor(value)+.5f;
+    } else {
+        _value = ceilf(value);
+    }
     [self setNeedsDisplay];
 }
 
@@ -207,7 +241,7 @@
 
 - (CGSize)intrinsicContentSize {
     CGFloat height = 44.f;
-    return CGSizeMake(self.maximumValue * height + (self.maximumValue+1) * self.spacing, height);
+    return CGSizeMake(_maximumValue * height + (_maximumValue+1) * _spacing, height);
 }
 
 @end
