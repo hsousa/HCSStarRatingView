@@ -26,6 +26,13 @@ starRatingView.tintColor = [UIColor redColor];
 [self.view addSubview:starRatingView];
 ```
 
+It also supports half-star ratings:
+
+```objective-c
+starRatingView.allowsHalfStars = YES;
+starRatingView.value = 2.5f;
+```
+
 ### Interface Builder
 
 `HCSStarRatingView` also implements IB_DESIGNABLE and IBInspectable so you can fully customize it in Interface Builder.
