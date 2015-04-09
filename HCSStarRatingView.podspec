@@ -1,7 +1,8 @@
 Pod::Spec.new do |s|
   s.name         = "HCSStarRatingView"
-  s.version      = "0.1"
+  s.version      = "1.0"
   s.summary      = "Simple star rating view for iOS written in Objective-C"
+  s.description  = "A UIControl subclass to easily provide users with a basic star-rating interface. It supports all device resolutions and requires no images do render the stars, thanks to PaintCode."
   s.homepage     = "https://github.com/hugocampossousa/HCSStarRatingView"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Hugo" => "hsousa@me.com" }
