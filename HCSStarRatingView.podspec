@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "SCLAlertView"
+  s.name         = "HCSStarRatingView"
   s.version      = "0.1"
   s.summary      = "Simple star rating view for iOS written in Objective-C"
   s.homepage     = "https://github.com/hugocampossousa/HCSStarRatingView"
