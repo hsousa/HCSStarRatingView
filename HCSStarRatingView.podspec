@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author             = { "Hugo" => "hsousa@me.com" }
   s.social_media_url   = "http://twitter.com/hsousa"
   s.platform     = :ios
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.0'
   s.source       = { :git => "git@github.com:hugocampossousa/HCSStarRatingView.git", :branch => "master" }
   s.source_files  = "HCSStarRatingView/*"
   s.requires_arc = true
