@@ -13,8 +13,47 @@
 		56B1A7D51A8A4240008C5470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56B1A7D31A8A4240008C5470 /* Main.storyboard */; };
 		56B1A7D71A8A4240008C5470 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56B1A7D61A8A4240008C5470 /* Images.xcassets */; };
 		56B1A7DA1A8A4240008C5470 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B1A7D81A8A4240008C5470 /* LaunchScreen.xib */; };
-		56B1A7F21A8A4270008C5470 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B1A7F11A8A4270008C5470 /* HCSStarRatingView.m */; };
+		B6AF40CC1B4FE7450060F1B8 /* HCSStarRatingView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF40C41B4FE7120060F1B8 /* HCSStarRatingView.framework */; };
+		B6AF40CD1B4FE7450060F1B8 /* HCSStarRatingView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF40C41B4FE7120060F1B8 /* HCSStarRatingView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6AF40C31B4FE7120060F1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B6AF40891B4FE3260060F1B8;
+			remoteInfo = HCSStarRatingView;
+		};
+		B6AF40C51B4FE7120060F1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B6AF40941B4FE3260060F1B8;
+			remoteInfo = HCSStarRatingViewTests;
+		};
+		B6AF40CE1B4FE7450060F1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B6AF40881B4FE3260060F1B8;
+			remoteInfo = HCSStarRatingView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B6AF40D01B4FE7450060F1B8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B6AF40CD1B4FE7450060F1B8 /* HCSStarRatingView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		56B1A7C61A8A4240008C5470 /* HCSStarRatingViewSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCSStarRatingViewSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,8 +66,7 @@
 		56B1A7D41A8A4240008C5470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56B1A7D61A8A4240008C5470 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		56B1A7D91A8A4240008C5470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		56B1A7F01A8A4270008C5470 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
-		56B1A7F11A8A4270008C5470 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
+		B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HCSStarRatingView.xcodeproj; path = ../HCSStarRatingView.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6AF40CC1B4FE7450060F1B8 /* HCSStarRatingView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +86,7 @@
 			children = (
 				56B1A7C81A8A4240008C5470 /* HCSStarRatingViewSample */,
 				56B1A7C71A8A4240008C5470 /* Products */,
+				B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,7 +101,6 @@
 		56B1A7C81A8A4240008C5470 /* HCSStarRatingViewSample */ = {
 			isa = PBXGroup;
 			children = (
-				56B1A7EF1A8A4270008C5470 /* HCSStarRatingView */,
 				56B1A7CD1A8A4240008C5470 /* AppDelegate.h */,
 				56B1A7CE1A8A4240008C5470 /* AppDelegate.m */,
 				56B1A7D01A8A4240008C5470 /* ViewController.h */,
@@ -83,14 +122,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		56B1A7EF1A8A4270008C5470 /* HCSStarRatingView */ = {
+		B6AF40BF1B4FE7120060F1B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56B1A7F01A8A4270008C5470 /* HCSStarRatingView.h */,
-				56B1A7F11A8A4270008C5470 /* HCSStarRatingView.m */,
+				B6AF40C41B4FE7120060F1B8 /* HCSStarRatingView.framework */,
+				B6AF40C61B4FE7120060F1B8 /* HCSStarRatingViewTests.xctest */,
 			);
-			name = HCSStarRatingView;
-			path = ../../HCSStarRatingView;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,10 +141,12 @@
 				56B1A7C21A8A4240008C5470 /* Sources */,
 				56B1A7C31A8A4240008C5470 /* Frameworks */,
 				56B1A7C41A8A4240008C5470 /* Resources */,
+				B6AF40D01B4FE7450060F1B8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B6AF40CF1B4FE7450060F1B8 /* PBXTargetDependency */,
 			);
 			name = HCSStarRatingViewSample;
 			productName = HCSStarRatingViewSample;
@@ -138,12 +178,35 @@
 			mainGroup = 56B1A7BD1A8A4240008C5470;
 			productRefGroup = 56B1A7C71A8A4240008C5470 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B6AF40BF1B4FE7120060F1B8 /* Products */;
+					ProjectRef = B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				56B1A7C51A8A4240008C5470 /* HCSStarRatingViewSample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B6AF40C41B4FE7120060F1B8 /* HCSStarRatingView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HCSStarRatingView.framework;
+			remoteRef = B6AF40C31B4FE7120060F1B8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6AF40C61B4FE7120060F1B8 /* HCSStarRatingViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = HCSStarRatingViewTests.xctest;
+			remoteRef = B6AF40C51B4FE7120060F1B8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		56B1A7C41A8A4240008C5470 /* Resources */ = {
@@ -165,12 +228,19 @@
 			files = (
 				56B1A7D21A8A4240008C5470 /* ViewController.m in Sources */,
 				56B1A7CF1A8A4240008C5470 /* AppDelegate.m in Sources */,
-				56B1A7F21A8A4270008C5470 /* HCSStarRatingView.m in Sources */,
 				56B1A7CC1A8A4240008C5470 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6AF40CF1B4FE7450060F1B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HCSStarRatingView;
+			targetProxy = B6AF40CE1B4FE7450060F1B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		56B1A7D31A8A4240008C5470 /* Main.storyboard */ = {
@@ -272,6 +342,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/HCSStarRatingViewSample-ejkjubavkfbjqpgdhbakhyojojhb/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = HCSStarRatingViewSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -282,6 +356,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/HCSStarRatingViewSample-ejkjubavkfbjqpgdhbakhyojojhb/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = HCSStarRatingViewSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
