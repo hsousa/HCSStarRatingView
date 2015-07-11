@@ -7,28 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B6AF40951B4FE3260060F1B8 /* HCSStarRatingView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AF40891B4FE3260060F1B8 /* HCSStarRatingView.framework */; };
-		B6AF409C1B4FE3260060F1B8 /* HCSStarRatingViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF409B1B4FE3260060F1B8 /* HCSStarRatingViewTests.m */; };
 		B6AF40BC1B4FE6D50060F1B8 /* HCSStarRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = B6AF40BA1B4FE6D50060F1B8 /* HCSStarRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6AF40BD1B4FE6D50060F1B8 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AF40BB1B4FE6D50060F1B8 /* HCSStarRatingView.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B6AF40961B4FE3260060F1B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6AF40801B4FE3260060F1B8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B6AF40881B4FE3260060F1B8;
-			remoteInfo = HCSStarRatingView;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		B6AF40891B4FE3260060F1B8 /* HCSStarRatingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HCSStarRatingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6AF408D1B4FE3260060F1B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6AF40941B4FE3260060F1B8 /* HCSStarRatingViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCSStarRatingViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6AF409A1B4FE3260060F1B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6AF409B1B4FE3260060F1B8 /* HCSStarRatingViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingViewTests.m; sourceTree = "<group>"; };
 		B6AF40BA1B4FE6D50060F1B8 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		B6AF40BB1B4FE6D50060F1B8 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,14 +26,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6AF40911B4FE3260060F1B8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B6AF40951B4FE3260060F1B8 /* HCSStarRatingView.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -56,7 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				B6AF408B1B4FE3260060F1B8 /* HCSStarRatingView */,
-				B6AF40981B4FE3260060F1B8 /* HCSStarRatingViewTests */,
 				B6AF408A1B4FE3260060F1B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				B6AF40891B4FE3260060F1B8 /* HCSStarRatingView.framework */,
-				B6AF40941B4FE3260060F1B8 /* HCSStarRatingViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,23 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				B6AF408D1B4FE3260060F1B8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B6AF40981B4FE3260060F1B8 /* HCSStarRatingViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				B6AF409B1B4FE3260060F1B8 /* HCSStarRatingViewTests.m */,
-				B6AF40991B4FE3260060F1B8 /* Supporting Files */,
-			);
-			path = HCSStarRatingViewTests;
-			sourceTree = "<group>";
-		};
-		B6AF40991B4FE3260060F1B8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B6AF409A1B4FE3260060F1B8 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -137,24 +95,6 @@
 			productReference = B6AF40891B4FE3260060F1B8 /* HCSStarRatingView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B6AF40931B4FE3260060F1B8 /* HCSStarRatingViewTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B6AF40A21B4FE3260060F1B8 /* Build configuration list for PBXNativeTarget "HCSStarRatingViewTests" */;
-			buildPhases = (
-				B6AF40901B4FE3260060F1B8 /* Sources */,
-				B6AF40911B4FE3260060F1B8 /* Frameworks */,
-				B6AF40921B4FE3260060F1B8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B6AF40971B4FE3260060F1B8 /* PBXTargetDependency */,
-			);
-			name = HCSStarRatingViewTests;
-			productName = HCSStarRatingViewTests;
-			productReference = B6AF40941B4FE3260060F1B8 /* HCSStarRatingViewTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,9 +105,6 @@
 				ORGANIZATIONNAME = hugocampossousa;
 				TargetAttributes = {
 					B6AF40881B4FE3260060F1B8 = {
-						CreatedOnToolsVersion = 6.4;
-					};
-					B6AF40931B4FE3260060F1B8 = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
@@ -185,20 +122,12 @@
 			projectRoot = "";
 			targets = (
 				B6AF40881B4FE3260060F1B8 /* HCSStarRatingView */,
-				B6AF40931B4FE3260060F1B8 /* HCSStarRatingViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B6AF40871B4FE3260060F1B8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B6AF40921B4FE3260060F1B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,23 +145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6AF40901B4FE3260060F1B8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B6AF409C1B4FE3260060F1B8 /* HCSStarRatingViewTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B6AF40971B4FE3260060F1B8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B6AF40881B4FE3260060F1B8 /* HCSStarRatingView */;
-			targetProxy = B6AF40961B4FE3260060F1B8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B6AF409D1B4FE3260060F1B8 /* Debug */ = {
@@ -353,36 +266,6 @@
 			};
 			name = Release;
 		};
-		B6AF40A31B4FE3260060F1B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HCSStarRatingViewTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B6AF40A41B4FE3260060F1B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HCSStarRatingViewTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -400,15 +283,6 @@
 			buildConfigurations = (
 				B6AF40A01B4FE3260060F1B8 /* Debug */,
 				B6AF40A11B4FE3260060F1B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B6AF40A21B4FE3260060F1B8 /* Build configuration list for PBXNativeTarget "HCSStarRatingViewTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B6AF40A31B4FE3260060F1B8 /* Debug */,
-				B6AF40A41B4FE3260060F1B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
