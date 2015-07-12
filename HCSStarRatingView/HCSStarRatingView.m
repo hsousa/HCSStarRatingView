@@ -89,8 +89,8 @@
 }
 
 - (void)setValue:(CGFloat)value {
-    if (_value != value) {
-        _value = MIN(MAX(value, _minimumValue), _maximumValue);
+    if (_value != value && value >= _minimumValue && value <= _maximumValue) {
+        _value = value;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
         [self setNeedsDisplay];
     }
