@@ -23,7 +23,7 @@
 #import "HCSStarRatingView.h"
 
 @implementation HCSStarRatingView {
-    NSUInteger _minimumValue;
+    CGFloat _minimumValue;
     NSUInteger _maximumValue;
     CGFloat _value;
 }
@@ -61,11 +61,11 @@
 
 #pragma mark - Properties
 
-- (NSUInteger)minimumValue {
+- (CGFloat)minimumValue {
     return MAX(_minimumValue, 0);
 }
 
-- (void)setMinimumValue:(NSUInteger)minimumValue {
+- (void)setMinimumValue:(CGFloat)minimumValue {
     if (_minimumValue != minimumValue) {
         _minimumValue = minimumValue;
         [self setNeedsDisplay];
