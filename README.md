@@ -8,14 +8,23 @@ It supports all device resolutions and requires no images do render the stars, t
 
 ## Installation
 
-Via [CocoaPods](http://cocoapods.org), add this line to your Podfile
-```ruby
+### Carthage
+
+```
+github "hugocampossousa/HCSStarRatingView"
+```
+
+### CocoaPods
+
+```
 pod 'HCSStarRatingView', :git => 'https://github.com/hugocampossousa/HCSStarRatingView.git'
 ```
 
 and run `pod install`
 
-You can also install it manually by copying HCSStarRatingView.h and HCSStarRatingView.m into your project.
+### Manually
+
+You can also install it manually by copying `HCSStarRatingView.{h|m}` into your project or including the project in your own project/workspace, similar to what's being done in `Sample`.
 
 ## Usage
 
