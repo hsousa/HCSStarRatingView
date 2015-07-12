@@ -26,7 +26,6 @@
     NSUInteger _minimumValue;
     NSUInteger _maximumValue;
     CGFloat _value;
-    NSUInteger _previousValue;
 }
 
 @dynamic minimumValue;
@@ -91,7 +90,7 @@
 
 - (void)setValue:(CGFloat)value {
     if (_value != value) {
-        _value = value;
+        _value = MIN(MAX(value, _minimumValue), _maximumValue);
         [self sendActionsForControlEvents:UIControlEventValueChanged];
         [self setNeedsDisplay];
     }
@@ -193,7 +192,6 @@
     if (![self isFirstResponder]) {
         [self becomeFirstResponder];
     }
-    _previousValue = _value;
     [self _handleTouch:touch];
     return YES;
 }
@@ -210,9 +208,6 @@
         [self resignFirstResponder];
     }
     [self _handleTouch:touch];
-    if (_value != _previousValue) {
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
-    }
 }
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event {
@@ -231,11 +226,10 @@
     CGPoint location = [touch locationInView:self];
     CGFloat value = location.x / cellWidth;
     if (_allowsHalfStars && value+.5f < ceilf(value)) {
-        _value = floor(value)+.5f;
+        self.value = floor(value)+.5f;
     } else {
-        _value = ceilf(value);
+        self.value = ceilf(value);
     }
-    [self setNeedsDisplay];
 }
 
 #pragma mark - First responder

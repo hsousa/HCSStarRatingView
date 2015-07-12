@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "HCSStarRatingView.h"
+#import <HCSStarRatingView/HCSStarRatingView.h>
 
 @interface ViewController ()
 
