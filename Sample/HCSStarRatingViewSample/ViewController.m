@@ -21,7 +21,7 @@
     HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
     starRatingView.maximumValue = 10;
     starRatingView.minimumValue = 0;
-    starRatingView.value = 4.5f;
+    starRatingView.value = 4;
     starRatingView.tintColor = [UIColor redColor];
     [starRatingView addTarget:self action:@selector(didChangeValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:starRatingView];
