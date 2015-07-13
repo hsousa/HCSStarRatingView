@@ -59,6 +59,12 @@ starRatingView.value = 2.5f;
 
 <a href="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ib.png"><img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ib.png"/></a>
 
+## Accessibility
+
+Users with specific needs should be able to fully read and interact with `HCSStarRatingView`, since it fully supports VoiceOver.
+
+If you or your users have other specific needs and you're having issues with this control, please contact me so we can figure it out! :-)
+
 ## Contact
 Hugo Sousa
 * [github.com/hugocampossousa](http://github.com/hugocampossousa)

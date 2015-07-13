@@ -245,4 +245,34 @@
     return CGSizeMake(_maximumValue * height + (_maximumValue+1) * _spacing, height);
 }
 
+#pragma mark - Accessibility
+
+- (BOOL)isAccessibilityElement {
+    return YES;
+}
+
+- (NSString *)accessibilityLabel {
+    return [super accessibilityLabel] ?: NSLocalizedString(@"Rating", @"Accessibility label for star rating control.");
+}
+
+- (UIAccessibilityTraits)accessibilityTraits {
+    return ([super accessibilityTraits] | UIAccessibilityTraitAdjustable);
+}
+
+- (NSString *)accessibilityValue {
+    return [@(self.value) description];
+}
+
+- (BOOL)accessibilityActivate {
+    return YES;
+}
+
+- (void)accessibilityIncrement {
+    self.value += self.allowsHalfStars ? .5f : 1.f;
+}
+
+- (void)accessibilityDecrement {
+    self.value -= self.allowsHalfStars ? .5f : 1.f;
+}
+
 @end
