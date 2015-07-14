@@ -56,7 +56,6 @@
 }
 
 - (void)_customInit {
-    self.backgroundColor = [UIColor clearColor];
     self.exclusiveTouch = YES;
     _minimumValue = 1;
     _maximumValue = 5;
@@ -70,6 +69,14 @@
 }
 
 #pragma mark - Properties
+
+- (UIColor *)backgroundColor {
+    if ([super backgroundColor]) {
+        return [super backgroundColor];
+    } else {
+        return self.isOpaque ? [UIColor whiteColor] : [UIColor clearColor];
+    };
+}
 
 - (CGFloat)minimumValue {
     return MAX(_minimumValue, 0);
