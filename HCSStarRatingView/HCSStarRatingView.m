@@ -160,7 +160,8 @@
         CGRect imageFrame = CGRectMake(0, 0, image.size.width * image.scale / 2.f, image.size.height * image.scale);
         frame.size.width /= 2.f;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, imageFrame);
-        image = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
+        UIImage *halfImage = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
+        image = [halfImage imageWithRenderingMode:image.renderingMode];
         CGImageRelease(imageRef);
     }
     [self _drawImage:image frame:frame tintColor:tintColor];
