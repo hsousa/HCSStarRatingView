@@ -57,7 +57,7 @@
 
 - (void)_customInit {
     self.exclusiveTouch = YES;
-    _minimumValue = 1;
+    _minimumValue = 0;
     _maximumValue = 5;
     _value = 0;
     _spacing = 5.f;
