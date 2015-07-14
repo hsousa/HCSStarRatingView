@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,8 +17,57 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVB-ID-mo4" customClass="HCSStarRatingView">
-                                <rect key="frame" x="160" y="100" width="280" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="180" y="59" width="240" height="44"/>
+                                <connections>
+                                    <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="1rl-fj-U4C"/>
+                                </connections>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Any-i3-QW6" customClass="HCSStarRatingView">
+                                <rect key="frame" x="180" y="264" width="240" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wgc-4F-q84"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="heart-empty"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="halfStarImage" value="heart-half"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="heart-full"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="3.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="YYD-Dm-sAd"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srp-wK-OLb" customClass="HCSStarRatingView">
+                                <rect key="frame" x="180" y="362" width="240" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F8v-bq-cxb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="3.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="heart-empty"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="heart-full"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="HH5-16-lFF"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U05-4o-rjB">
+                                <rect key="frame" x="273" y="30" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-HF-a1T" customClass="HCSStarRatingView">
+                                <rect key="frame" x="170" y="161" width="260" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                         <integer key="value" value="5"/>
@@ -35,20 +84,68 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="1rl-fj-U4C"/>
+                                    <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="3pP-Vq-Hdf"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Images..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AH3-Pi-JJX">
+                                <rect key="frame" x="232" y="235" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Also renders template images!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuM-hA-7Kt">
+                                <rect key="frame" x="184" y="432" width="233" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No half-star image? No problem!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xg-rI-a6B">
+                                <rect key="frame" x="175" y="334" width="251" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Half-star rating..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbF-gI-E7H">
+                                <rect key="frame" x="236" y="133" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QVB-ID-mo4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="80" id="deu-aP-ts0"/>
-                            <constraint firstAttribute="centerX" secondItem="QVB-ID-mo4" secondAttribute="centerX" id="lPA-ZU-0n4"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="Any-i3-QW6" secondAttribute="centerX" id="2g9-Rh-Yjc"/>
+                            <constraint firstItem="Any-i3-QW6" firstAttribute="top" secondItem="AH3-Pi-JJX" secondAttribute="bottom" constant="8" id="56J-ID-N7q"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="AH3-Pi-JJX" secondAttribute="centerX" id="6NC-fh-LQV"/>
+                            <constraint firstItem="3Xg-rI-a6B" firstAttribute="top" secondItem="Any-i3-QW6" secondAttribute="bottom" constant="30" id="6kz-US-25Y"/>
+                            <constraint firstItem="AH3-Pi-JJX" firstAttribute="top" secondItem="fd3-HF-a1T" secondAttribute="bottom" constant="30" id="7K3-ED-Gja"/>
+                            <constraint firstItem="QVB-ID-mo4" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="DFR-LK-JOo"/>
+                            <constraint firstItem="LuM-hA-7Kt" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="Ncv-Vr-4u9"/>
+                            <constraint firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="O3z-fq-BHK"/>
+                            <constraint firstItem="srp-wK-OLb" firstAttribute="top" secondItem="3Xg-rI-a6B" secondAttribute="bottom" constant="8" id="OYV-td-EzR"/>
+                            <constraint firstItem="fd3-HF-a1T" firstAttribute="top" secondItem="rbF-gI-E7H" secondAttribute="bottom" constant="8" id="OtC-wA-hqa"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="3Xg-rI-a6B" secondAttribute="centerX" id="VQG-q6-h7T"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="fd3-HF-a1T" secondAttribute="centerX" id="bJc-cg-I8t"/>
+                            <constraint firstItem="LuM-hA-7Kt" firstAttribute="top" secondItem="srp-wK-OLb" secondAttribute="bottom" constant="30" id="bte-to-Mp3"/>
+                            <constraint firstItem="QVB-ID-mo4" firstAttribute="top" secondItem="U05-4o-rjB" secondAttribute="bottom" constant="8" id="eTZ-CA-QnN"/>
+                            <constraint firstItem="rbF-gI-E7H" firstAttribute="top" secondItem="QVB-ID-mo4" secondAttribute="bottom" constant="30" id="mlS-tR-XO2"/>
+                            <constraint firstItem="srp-wK-OLb" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="pwY-uT-4GR"/>
+                            <constraint firstItem="rbF-gI-E7H" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="uDs-8b-ORu"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="wyf-M7-31Y"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lastRatingTitleLabel" destination="LuM-hA-7Kt" id="pwc-dU-m8n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="297" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart-empty" width="40" height="40"/>
+        <image name="heart-full" width="40" height="40"/>
+        <image name="heart-half" width="40" height="40"/>
+    </resources>
 </document>
