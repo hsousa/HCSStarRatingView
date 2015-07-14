@@ -163,11 +163,11 @@
     CGContextSetFillColorWithColor(context, self.backgroundColor.CGColor);
     CGContextFillRect(context, rect);
     
-    CGFloat availableWidth = rect.size.width - (_spacing * (_maximumValue + 1));
+    CGFloat availableWidth = rect.size.width - (_spacing * (_maximumValue - 1));
     CGFloat cellWidth = (availableWidth / _maximumValue);
     CGFloat starSide = (cellWidth <= rect.size.height) ? cellWidth : rect.size.height;
     for (int idx = 0; idx < _maximumValue; idx++) {
-        CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*(idx+1), rect.size.height/2);
+        CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*idx, rect.size.height/2);
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
         BOOL highlighted = (idx+1 <= ceilf(_value));
         BOOL halfStar = highlighted ? (idx+1 > _value) : NO;
@@ -242,7 +242,7 @@
 
 - (CGSize)intrinsicContentSize {
     CGFloat height = 44.f;
-    return CGSizeMake(_maximumValue * height + (_maximumValue+1) * _spacing, height);
+    return CGSizeMake(_maximumValue * height + (_maximumValue-1) * _spacing, height);
 }
 
 #pragma mark - Accessibility
