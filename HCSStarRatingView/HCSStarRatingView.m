@@ -22,6 +22,10 @@
 
 #import "HCSStarRatingView.h"
 
+@interface HCSStarRatingView ()
+@property (nonatomic, readonly) BOOL shouldUseImages;
+@end
+
 @implementation HCSStarRatingView {
     CGFloat _minimumValue;
     NSUInteger _maximumValue;
@@ -31,6 +35,7 @@
 @dynamic minimumValue;
 @dynamic maximumValue;
 @dynamic value;
+@dynamic shouldUseImages;
 
 #pragma mark - Initialization
 
@@ -56,6 +61,11 @@
     _maximumValue = 5;
     _value = 0;
     _spacing = 5.f;
+}
+
+- (void)setNeedsLayout {
+    [super setNeedsLayout];
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Properties
@@ -115,9 +125,65 @@
     }
 }
 
-#pragma mark - Drawing
+- (void)setEmptyStarImage:(UIImage *)emptyStarImage {
+    if (_emptyStarImage != emptyStarImage) {
+        _emptyStarImage = emptyStarImage;
+        [self setNeedsDisplay];
+    }
+}
 
-- (void)_drawStarWithFrame:(CGRect)frame tintColor:(UIColor*)tintColor highlighted:(BOOL)highlighted {
+- (void)setHalfStarImage:(UIImage *)halfStarImage {
+    if (_halfStarImage != halfStarImage) {
+        _halfStarImage = halfStarImage;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setFilledStarImage:(UIImage *)filledStarImage {
+    if (_filledStarImage != filledStarImage) {
+        _filledStarImage = filledStarImage;
+        [self setNeedsDisplay];
+    }
+}
+
+- (BOOL)shouldUseImages {
+    return (self.emptyStarImage!=nil && self.filledStarImage!=nil);
+}
+
+#pragma mark - Image Drawing
+
+- (void)_drawStarImageWithFrame:(CGRect)frame tintColor:(UIColor*)tintColor highlighted:(BOOL)highlighted {
+    UIImage *image = highlighted ? self.filledStarImage : self.emptyStarImage;
+    [self _drawImage:image frame:frame tintColor:tintColor];
+}
+
+- (void)_drawHalfStarImageWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
+    // first draw star outline
+    [self _drawStarImageWithFrame:frame tintColor:tintColor highlighted:NO];
+    
+    UIImage *image = self.halfStarImage;
+    if (image == nil) {
+        image = self.filledStarImage;
+        CGRect imageFrame = CGRectMake(0, 0, image.size.width * image.scale / 2.f, image.size.height * image.scale);
+        frame.size.width /= 2.f;
+        CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, imageFrame);
+        UIImage *halfImage = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
+        image = [halfImage imageWithRenderingMode:image.renderingMode];
+        CGImageRelease(imageRef);
+    }
+    [self _drawImage:image frame:frame tintColor:tintColor];
+}
+
+- (void)_drawImage:(UIImage *)image frame:(CGRect)frame tintColor:(UIColor *)tintColor {
+    if (image.renderingMode == UIImageRenderingModeAlwaysTemplate) {
+        [tintColor setFill];
+    }
+    [image drawInRect:frame];
+}
+
+#pragma mark - Shape Drawing
+
+- (void)_drawStarShapeWithFrame:(CGRect)frame tintColor:(UIColor*)tintColor highlighted:(BOOL)highlighted {
     UIBezierPath* starShapePath = UIBezierPath.bezierPath;
     [starShapePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.62723 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.37309 * CGRectGetHeight(frame))];
     [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
@@ -143,7 +209,11 @@
     [starShapePath stroke];
 }
 
-- (void)_drawHalfStarWithFrame:(CGRect)frame tintcolor:(UIColor *)tintColor highlighted:(BOOL)highlighted {
+- (void)_drawHalfStarShapeWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
+    
+    // first draw star outline
+    [self _drawStarShapeWithFrame:frame tintColor:tintColor highlighted:NO];
+    
     UIBezierPath* starShapePath = UIBezierPath.bezierPath;
     [starShapePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
     [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.37292 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.37309 * CGRectGetHeight(frame))];
@@ -155,15 +225,15 @@
     [starShapePath closePath];
     starShapePath.miterLimit = 4;
     
-    if (highlighted) {
-        [tintColor setFill];
-        [starShapePath fill];
-    }
+    [tintColor setFill];
+    [starShapePath fill];
     
     [tintColor setStroke];
     starShapePath.lineWidth = 1;
     [starShapePath stroke];
 }
+
+#pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -177,19 +247,28 @@
         CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*idx, rect.size.height/2);
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
         BOOL highlighted = (idx+1 <= ceilf(_value));
-        BOOL halfStar = highlighted ? (idx+1 > _value) : NO;
-        if (halfStar && _allowsHalfStars) {
-            [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:NO];
-            [self _drawHalfStarWithFrame:frame tintcolor:self.tintColor highlighted:highlighted];
+        if (_allowsHalfStars && highlighted && (idx+1 > _value)) {
+            [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
         } else {
             [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:highlighted];
         }
     }
 }
 
-- (void)setNeedsLayout {
-    [super setNeedsLayout];
-    [self setNeedsDisplay];
+- (void)_drawStarWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor highlighted:(BOOL)highlighted {
+    if (self.shouldUseImages) {
+        [self _drawStarImageWithFrame:frame tintColor:tintColor highlighted:highlighted];
+    } else {
+        [self _drawStarShapeWithFrame:frame tintColor:tintColor highlighted:highlighted];
+    }
+}
+
+- (void)_drawHalfStarWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
+    if (self.shouldUseImages) {
+        [self _drawHalfStarImageWithFrame:frame tintColor:tintColor];
+    } else {
+        [self _drawHalfStarShapeWithFrame:frame tintColor:tintColor];
+    }
 }
 
 #pragma mark - Touches
