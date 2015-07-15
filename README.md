@@ -2,9 +2,9 @@
 
 `HCSStarRatingView` is a `UIControl` subclass to easily provide users with a basic star rating interface.
 
-It supports all device resolutions and requires no images do render the stars, thanks to <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>.
+It supports all device resolutions and although it requires no images do render the stars (thanks <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>), you can provide custom ones if you so desire.
 
-<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ios.gif" width="288" height="86	" />
+<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ios.gif" width="288" height="394" />
 
 ## Installation
 
@@ -30,11 +30,7 @@ You can also install it manually by copying `HCSStarRatingView.{h|m}` into your 
 
 ### Programatically
 
-You can create a new rating view programatically by importing HCSStarRatingView.h and HCSStarRatingView.m into your project and:
-
-```objective-c
-#import "HCSStarRatingView.h"
-```
+Create a new instance and set the properties you desire to customize.
 
 ```objective-c
 HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
@@ -46,18 +42,40 @@ starRatingView.tintColor = [UIColor redColor];
 [self.view addSubview:starRatingView];
 ```
 
-It also supports half-star ratings:
+`HCSStarRatingView` also works great with Auto Layout, so feel free to set some constraints instead of just giving it a frame (check sample project)!
+
+#### Half-star ratings:
 
 ```objective-c
 starRatingView.allowsHalfStars = YES;
 starRatingView.value = 2.5f;
 ```
 
+#### Custom images:
+
+Using custom images in `HCSStarRatingView` is as easy as setting a property. You only need to set `emptyStarImage` and `filledStarImage`, but you can also provide the half image to `halfStarImage`, if your design requires you to:
+
+```objective-c
+starRatingView.emptyStarImage = [UIImage imageNamed:@"heart-empty"];
+starRatingView.halfStarImage = [UIImage imageNamed:@"heart-half"]; // optional
+starRatingView.filledStarImage = [UIImage imageNamed:@"heart-full"];
+```
+
+If you want to use template images programatically, just make sure they have the proper `Rendering Mode`:
+
+```objective-c
+starRatingView.emptyStarImage = [[UIImage imageNamed:@"heart-empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+starRatingView.halfStarImage = [[UIImage imageNamed:@"heart-half"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]; // optional
+starRatingView.filledStarImage = [[UIImage imageNamed:@"heart-full"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+```
+
 ### Interface Builder
 
-`HCSStarRatingView` also implements IB_DESIGNABLE and IBInspectable so you can fully customize it in Interface Builder.
+`HCSStarRatingView` also implements `IB_DESIGNABLE` and `IBInspectable` so you can fully customize it in Interface Builder.
 
 <a href="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ib.png"><img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ib.png"/></a>
+
+PS: In order to use template images in Interface Builder you must go to that image's properties in your Asset Catalog and change the `Render As` setting to `Template Image`.
 
 ## Accessibility
 
