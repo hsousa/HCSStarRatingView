@@ -4,7 +4,7 @@
 
 It supports all device resolutions and although it requires no images do render the stars (thanks <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>), you can provide custom ones if you so desire.
 
-<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ios.gif" width="288" height="394" />
+<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/demo.gif" width="288" height="394" />
 
 ## Installation
 
@@ -73,7 +73,7 @@ starRatingView.filledStarImage = [[UIImage imageNamed:@"heart-full"] imageWithRe
 
 `HCSStarRatingView` also implements `IB_DESIGNABLE` and `IBInspectable` so you can fully customize it in Interface Builder.
 
-<a href="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ib.png"><img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/ib.png"/></a>
+<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/interface-builder.png"/>
 
 PS: In order to use template images in Interface Builder you must go to that image's properties in your Asset Catalog and change the `Render As` setting to `Template Image`.
 
