@@ -26,10 +26,11 @@
     starRatingView.allowsHalfStars = YES;
     starRatingView.emptyStarImage = [[UIImage imageNamed:@"heart-empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     starRatingView.filledStarImage = [[UIImage imageNamed:@"heart-full"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    starRatingView.translatesAutoresizingMaskIntoConstraints = NO;
     [starRatingView addTarget:self action:@selector(didChangeValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:starRatingView];
     
+    // auto layout
+    starRatingView.translatesAutoresizingMaskIntoConstraints = NO;
     [[NSLayoutConstraint constraintWithItem:starRatingView
                                  attribute:NSLayoutAttributeTop
                                  relatedBy:NSLayoutRelationEqual
