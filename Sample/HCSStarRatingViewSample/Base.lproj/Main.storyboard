@@ -23,7 +23,7 @@
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Any-i3-QW6" customClass="HCSStarRatingView">
-                                <rect key="frame" x="180" y="264" width="240" height="40"/>
+                                <rect key="frame" x="180" y="265" width="240" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wgc-4F-q84"/>
                                 </constraints>
@@ -41,7 +41,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srp-wK-OLb" customClass="HCSStarRatingView">
-                                <rect key="frame" x="180" y="362" width="240" height="40"/>
+                                <rect key="frame" x="180" y="364" width="240" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="F8v-bq-cxb"/>
                                 </constraints>
@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-HF-a1T" customClass="HCSStarRatingView">
-                                <rect key="frame" x="170" y="161" width="260" height="44"/>
+                                <rect key="frame" x="170" y="162" width="260" height="44"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                         <integer key="value" value="5"/>
@@ -88,19 +88,19 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Images..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AH3-Pi-JJX">
-                                <rect key="frame" x="232" y="235" width="136" height="21"/>
+                                <rect key="frame" x="232" y="236" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Also renders template images!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuM-hA-7Kt">
-                                <rect key="frame" x="184" y="432" width="233" height="21"/>
+                                <rect key="frame" x="184" y="434" width="233" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No half-star image? No problem!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xg-rI-a6B">
-                                <rect key="frame" x="175" y="334" width="251" height="21"/>
+                                <rect key="frame" x="175" y="335" width="251" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
