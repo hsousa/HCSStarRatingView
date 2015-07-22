@@ -158,11 +158,11 @@
 }
 
 - (void)_drawHalfStarImageWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
-    // first draw star outline
-    [self _drawStarImageWithFrame:frame tintColor:tintColor highlighted:NO];
-    
     UIImage *image = self.halfStarImage;
     if (image == nil) {
+        // first draw star outline
+        [self _drawStarImageWithFrame:frame tintColor:tintColor highlighted:NO];
+        
         image = self.filledStarImage;
         CGRect imageFrame = CGRectMake(0, 0, image.size.width * image.scale / 2.f, image.size.height * image.scale);
         frame.size.width /= 2.f;
