@@ -17,6 +17,10 @@ github "hugocampossousa/HCSStarRatingView"
 ### CocoaPods
 
 ```
+use_frameworks!
+
+(...)
+
 pod 'HCSStarRatingView', :git => 'https://github.com/hugocampossousa/HCSStarRatingView.git'
 ```
 
