@@ -21,7 +21,7 @@ use_frameworks!
 
 (...)
 
-pod 'HCSStarRatingView', :git => 'https://github.com/hugocampossousa/HCSStarRatingView.git'
+pod 'HCSStarRatingView', '~> 1.2'
 ```
 
 and run `pod install`
