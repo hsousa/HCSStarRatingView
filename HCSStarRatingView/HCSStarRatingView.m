@@ -129,6 +129,14 @@
     }
 }
 
+-(void)setHalfStarStyle:(HalfStarStyle)halfStarStyle
+{
+    if (_halfStarStyle != halfStarStyle) {
+        _halfStarStyle = halfStarStyle;
+        [self setNeedsDisplay];
+    }
+}
+
 - (void)setEmptyStarImage:(UIImage *)emptyStarImage {
     if (_emptyStarImage != emptyStarImage) {
         _emptyStarImage = emptyStarImage;
@@ -252,7 +260,12 @@
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
         BOOL highlighted = (idx+1 <= ceilf(_value));
         if (_allowsHalfStars && highlighted && (idx+1 > _value)) {
-            [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
+            if (_halfStarStyle == HalfStarStyleDefaul) {
+                [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
+            }
+            else {
+                [self _drawAccurateStarWithFrame:frame tintColor:self.tintColor percent:_value - idx];
+            }
         } else {
             [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:highlighted];
         }
@@ -274,7 +287,22 @@
         [self _drawHalfStarShapeWithFrame:frame tintColor:tintColor];
     }
 }
-
+- (void)_drawAccurateStarWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor percent:(CGFloat)percent {
+    [self _drawStarWithFrame:frame tintColor:tintColor highlighted:YES];
+    CGFloat frameWidth = frame.size.width;
+    CGRect rightRectOfStar = CGRectMake(frame.origin.x + percent * frameWidth, frame.origin.y, frameWidth - percent * frameWidth, frame.size.height);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextAddRect(context, rightRectOfStar);
+    [self.backgroundColor setFill];
+    CGContextDrawPath(context, kCGPathEOFill);
+    
+    CGRect restRectOfSelf = rightRectOfStar;
+    restRectOfSelf.size.width = self.frame.size.width - CGRectGetMinX(rightRectOfStar);
+    CGContextClipToRect(context, restRectOfSelf);
+    
+    [self _drawStarWithFrame:frame tintColor:tintColor highlighted:NO];
+}
 #pragma mark - Touches
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
