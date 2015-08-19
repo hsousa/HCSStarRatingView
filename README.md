@@ -4,14 +4,14 @@
 
 It supports all device resolutions and although it requires no images do render the stars (thanks <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>), you can provide custom ones if you so desire.
 
-<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/demo.gif" width="288" height="394" />
+<img src="https://raw.github.com/hsousa/HCSStarRatingView/master/Assets/demo.gif" width="288" height="394" />
 
 ## Installation
 
 ### Carthage
 
 ```
-github "hugocampossousa/HCSStarRatingView"
+github "hsousa/HCSStarRatingView"
 ```
 
 ### CocoaPods
@@ -77,7 +77,7 @@ starRatingView.filledStarImage = [[UIImage imageNamed:@"heart-full"] imageWithRe
 
 `HCSStarRatingView` also implements `IB_DESIGNABLE` and `IBInspectable` so you can fully customize it in Interface Builder.
 
-<img src="https://raw.github.com/hugocampossousa/HCSStarRatingView/master/Assets/interface-builder.png"/>
+<img src="https://raw.github.com/hsousa/HCSStarRatingView/master/Assets/interface-builder.png"/>
 
 PS: In order to use template images in Interface Builder you must go to that image's properties in your Asset Catalog and change the `Render As` setting to `Template Image`.
 
@@ -89,7 +89,7 @@ If you or your users have other specific needs and you're having issues with thi
 
 ## Contact
 Hugo Sousa
-* [github.com/hugocampossousa](http://github.com/hugocampossousa)
+* [github.com/hsousa](http://github.com/hsousa)
 * [twitter/hsousa](http://twitter.com/hsousa)
 * [hsousa@me.com](hsousa@me.com)
 
