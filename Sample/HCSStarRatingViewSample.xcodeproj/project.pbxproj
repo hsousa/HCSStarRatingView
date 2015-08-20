@@ -25,13 +25,6 @@
 			remoteGlobalIDString = B6AF40891B4FE3260060F1B8;
 			remoteInfo = HCSStarRatingView;
 		};
-		B6AF40C51B4FE7120060F1B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B6AF40941B4FE3260060F1B8;
-			remoteInfo = HCSStarRatingViewTests;
-		};
 		B6AF40CE1B4FE7450060F1B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6AF40BE1B4FE7120060F1B8 /* HCSStarRatingView.xcodeproj */;
@@ -126,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				B6AF40C41B4FE7120060F1B8 /* HCSStarRatingView.framework */,
-				B6AF40C61B4FE7120060F1B8 /* HCSStarRatingViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,13 +189,6 @@
 			fileType = wrapper.framework;
 			path = HCSStarRatingView.framework;
 			remoteRef = B6AF40C31B4FE7120060F1B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B6AF40C61B4FE7120060F1B8 /* HCSStarRatingViewTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = HCSStarRatingViewTests.xctest;
-			remoteRef = B6AF40C51B4FE7120060F1B8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
