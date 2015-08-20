@@ -106,9 +106,13 @@
 }
 
 - (void)setValue:(CGFloat)value {
+    [self setValue:value sendValueChangedAction:NO];
+}
+
+- (void)setValue:(CGFloat)value sendValueChangedAction:(BOOL)sendAction {
     if (_value != value && value >= _minimumValue && value <= _maximumValue) {
         _value = value;
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
+        if (sendAction) [self sendActionsForControlEvents:UIControlEventValueChanged];
         [self setNeedsDisplay];
     }
 }
@@ -312,10 +316,11 @@
     CGPoint location = [touch locationInView:self];
     CGFloat value = location.x / cellWidth;
     if (_allowsHalfStars && value+.5f < ceilf(value)) {
-        self.value = floor(value)+.5f;
+        value = floor(value)+.5f;
     } else {
-        self.value = ceilf(value);
+        value = ceilf(value);
     }
+    [self setValue:value sendValueChangedAction:YES];
 }
 
 #pragma mark - First responder
