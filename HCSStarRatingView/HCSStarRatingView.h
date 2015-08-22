@@ -21,10 +21,7 @@
 // THE SOFTWARE.
 
 @import UIKit;
-typedef NS_ENUM(NSInteger, HalfStarStyle) {
-    HalfStarStyleDefaul,
-    HalfStarStyleAccurate
-};
+
 IB_DESIGNABLE
 @interface HCSStarRatingView : UIControl
 @property (nonatomic) IBInspectable NSUInteger maximumValue;
@@ -32,7 +29,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat value;
 @property (nonatomic) IBInspectable CGFloat spacing;
 @property (nonatomic) IBInspectable BOOL allowsHalfStars;
-@property (nonatomic) IBInspectable HalfStarStyle halfStarStyle;
+@property (nonatomic, getter = isAccurateHalfStars) IBInspectable BOOL accurateHalfStars;
 
 @property (nonatomic, strong) IBInspectable UIImage *emptyStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *halfStarImage;
