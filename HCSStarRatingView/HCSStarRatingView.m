@@ -125,10 +125,9 @@
     }
 }
 
--(void)setHalfStarStyle:(HalfStarStyle)halfStarStyle
-{
-    if (_halfStarStyle != halfStarStyle) {
-        _halfStarStyle = halfStarStyle;
+- (void)setAccurateHalfStars:(BOOL)accurateHalfStars {
+    if (_accurateHalfStars != accurateHalfStars) {
+        _accurateHalfStars = accurateHalfStars;
         [self setNeedsDisplay];
     }
 }
@@ -256,11 +255,11 @@
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
         BOOL highlighted = (idx+1 <= ceilf(_value));
         if (_allowsHalfStars && highlighted && (idx+1 > _value)) {
-            if (_halfStarStyle == HalfStarStyleDefaul) {
-                [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
+            if (_accurateHalfStars) {
+                [self _drawAccurateStarWithFrame:frame tintColor:self.tintColor percent:_value - idx];
             }
             else {
-                [self _drawAccurateStarWithFrame:frame tintColor:self.tintColor percent:_value - idx];
+                 [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
             }
         } else {
             [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:highlighted];
@@ -339,8 +338,17 @@
     CGFloat cellWidth = self.bounds.size.width / _maximumValue;
     CGPoint location = [touch locationInView:self];
     CGFloat value = location.x / cellWidth;
-    if (_allowsHalfStars && value+.5f < ceilf(value)) {
-        self.value = floor(value)+.5f;
+    if (_allowsHalfStars) {
+        if (_accurateHalfStars) {
+            self.value = value;
+        }
+        else {
+            if (value+.5f < ceilf(value)) {
+                self.value = floor(value)+.5f;
+            } else {
+                self.value = ceilf(value);
+            }
+        }
     } else {
         self.value = ceilf(value);
     }
