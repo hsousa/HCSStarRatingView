@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,17 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QVB-ID-mo4" customClass="HCSStarRatingView">
-                                <rect key="frame" x="180" y="58" width="240" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVB-ID-mo4" customClass="HCSStarRatingView">
+                                <rect key="frame" x="180" y="41" width="240" height="44"/>
+                                <animations/>
                                 <connections>
                                     <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="1rl-fj-U4C"/>
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Any-i3-QW6" customClass="HCSStarRatingView">
-                                <rect key="frame" x="180" y="265" width="240" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="wgc-4F-q84"/>
-                                </constraints>
+                                <rect key="frame" x="180" y="210" width="240" height="44"/>
+                                <animations/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="heart-empty"/>
@@ -41,10 +41,8 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srp-wK-OLb" customClass="HCSStarRatingView">
-                                <rect key="frame" x="180" y="364" width="240" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="F8v-bq-cxb"/>
-                                </constraints>
+                                <rect key="frame" x="180" y="294" width="240" height="44"/>
+                                <animations/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
                                         <real key="value" value="3.5"/>
@@ -61,13 +59,15 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U05-4o-rjB">
-                                <rect key="frame" x="273" y="30" width="54.5" height="20.5"/>
+                                <rect key="frame" x="273" y="20" width="55" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-HF-a1T" customClass="HCSStarRatingView">
-                                <rect key="frame" x="170" y="162" width="260" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-HF-a1T" customClass="HCSStarRatingView">
+                                <rect key="frame" x="170" y="125" width="260" height="44"/>
+                                <animations/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                         <integer key="value" value="5"/>
@@ -87,32 +87,37 @@
                                     <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="3pP-Vq-Hdf"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Custom Images..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AH3-Pi-JJX">
-                                <rect key="frame" x="232" y="236" width="136" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Images..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AH3-Pi-JJX">
+                                <rect key="frame" x="234" y="189" width="133" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Also renders template images!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuM-hA-7Kt">
-                                <rect key="frame" x="184" y="434" width="232.5" height="20.5"/>
+                                <rect key="frame" x="184" y="358" width="232" height="21"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No half-star image? No problem!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xg-rI-a6B">
-                                <rect key="frame" x="175" y="335" width="251" height="21"/>
+                                <rect key="frame" x="176" y="274" width="250" height="20"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Half-star rating..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbF-gI-E7H">
-                                <rect key="frame" x="236" y="133" width="129" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Half-star rating..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbF-gI-E7H">
+                                <rect key="frame" x="235" y="105" width="130" height="20"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pa-Ql-2Lp" customClass="HCSStarRatingView">
-                                <rect key="frame" x="170" y="536" width="260" height="44"/>
+                                <rect key="frame" x="169" y="459" width="260" height="44"/>
+                                <animations/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                         <integer key="value" value="5"/>
@@ -134,40 +139,59 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accurate Half-star rating..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3F8-0P-g4U">
-                                <rect key="frame" x="199" y="507" width="203" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="ENk-FF-638"/>
-                                </constraints>
+                                <rect key="frame" x="198" y="439" width="203" height="20"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-eL-VRM" customClass="HCSStarRatingView">
+                                <rect key="frame" x="179" y="508" width="240" height="44"/>
+                                <animations/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="3.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="heart-empty"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="heart-full"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didChangeValue:" destination="vXZ-lx-hvc" eventType="valueChanged" id="4O9-4P-ua6"/>
+                                </connections>
+                            </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3F8-0P-g4U" firstAttribute="top" secondItem="LuM-hA-7Kt" secondAttribute="bottom" constant="52" id="0VV-VM-cNT"/>
-                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="Any-i3-QW6" secondAttribute="centerX" id="2g9-Rh-Yjc"/>
-                            <constraint firstItem="Any-i3-QW6" firstAttribute="top" secondItem="AH3-Pi-JJX" secondAttribute="bottom" constant="8" id="56J-ID-N7q"/>
-                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="AH3-Pi-JJX" secondAttribute="centerX" id="6NC-fh-LQV"/>
-                            <constraint firstItem="3Xg-rI-a6B" firstAttribute="top" secondItem="Any-i3-QW6" secondAttribute="bottom" constant="30" id="6kz-US-25Y"/>
-                            <constraint firstItem="AH3-Pi-JJX" firstAttribute="top" secondItem="fd3-HF-a1T" secondAttribute="bottom" constant="30" id="7K3-ED-Gja"/>
-                            <constraint firstItem="QVB-ID-mo4" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="DFR-LK-JOo"/>
-                            <constraint firstItem="LuM-hA-7Kt" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="Ncv-Vr-4u9"/>
-                            <constraint firstItem="0Pa-Ql-2Lp" firstAttribute="leading" secondItem="fd3-HF-a1T" secondAttribute="leading" id="NjC-q5-Q85"/>
-                            <constraint firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="O3z-fq-BHK"/>
-                            <constraint firstItem="srp-wK-OLb" firstAttribute="top" secondItem="3Xg-rI-a6B" secondAttribute="bottom" constant="8" id="OYV-td-EzR"/>
-                            <constraint firstItem="fd3-HF-a1T" firstAttribute="top" secondItem="rbF-gI-E7H" secondAttribute="bottom" constant="8" id="OtC-wA-hqa"/>
-                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="3Xg-rI-a6B" secondAttribute="centerX" id="VQG-q6-h7T"/>
-                            <constraint firstItem="3F8-0P-g4U" firstAttribute="leading" secondItem="rbF-gI-E7H" secondAttribute="leading" constant="-37" id="Wgp-yn-WU8"/>
-                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="fd3-HF-a1T" secondAttribute="centerX" id="bJc-cg-I8t"/>
-                            <constraint firstItem="LuM-hA-7Kt" firstAttribute="top" secondItem="srp-wK-OLb" secondAttribute="bottom" constant="30" id="bte-to-Mp3"/>
-                            <constraint firstItem="0Pa-Ql-2Lp" firstAttribute="top" secondItem="3F8-0P-g4U" secondAttribute="bottom" constant="8" symbolic="YES" id="cqd-Vn-0L5"/>
-                            <constraint firstItem="QVB-ID-mo4" firstAttribute="top" secondItem="U05-4o-rjB" secondAttribute="bottom" constant="8" id="eTZ-CA-QnN"/>
-                            <constraint firstItem="0Pa-Ql-2Lp" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="536" id="l78-Hd-fE3"/>
-                            <constraint firstItem="rbF-gI-E7H" firstAttribute="top" secondItem="QVB-ID-mo4" secondAttribute="bottom" constant="30" id="mlS-tR-XO2"/>
-                            <constraint firstItem="srp-wK-OLb" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="pwY-uT-4GR"/>
-                            <constraint firstItem="rbF-gI-E7H" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="uDs-8b-ORu"/>
-                            <constraint firstItem="U05-4o-rjB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="wyf-M7-31Y"/>
+                            <constraint firstItem="Any-i3-QW6" firstAttribute="top" secondItem="AH3-Pi-JJX" secondAttribute="bottom" id="2ez-Nn-Bfz"/>
+                            <constraint firstItem="0Pa-Ql-2Lp" firstAttribute="top" secondItem="3F8-0P-g4U" secondAttribute="bottom" id="3Ai-o9-3ej"/>
+                            <constraint firstItem="3Xg-rI-a6B" firstAttribute="top" secondItem="Any-i3-QW6" secondAttribute="bottom" constant="20" id="5B4-Sc-kEk"/>
+                            <constraint firstItem="srp-wK-OLb" firstAttribute="top" secondItem="3Xg-rI-a6B" secondAttribute="bottom" id="70b-7W-0gP"/>
+                            <constraint firstItem="AH3-Pi-JJX" firstAttribute="top" secondItem="fd3-HF-a1T" secondAttribute="bottom" constant="20" id="Bnj-RO-gcU"/>
+                            <constraint firstItem="0Pa-Ql-2Lp" firstAttribute="centerX" secondItem="3F8-0P-g4U" secondAttribute="centerX" id="F6e-s6-1gV"/>
+                            <constraint firstItem="Any-i3-QW6" firstAttribute="centerX" secondItem="AH3-Pi-JJX" secondAttribute="centerX" id="Gf1-Ps-Vft"/>
+                            <constraint firstItem="ETv-eL-VRM" firstAttribute="top" secondItem="0Pa-Ql-2Lp" secondAttribute="bottom" constant="5" id="HBT-8w-X8h"/>
+                            <constraint firstItem="ETv-eL-VRM" firstAttribute="centerX" secondItem="0Pa-Ql-2Lp" secondAttribute="centerX" id="IjE-vH-OrH"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="OQY-o3-6u1"/>
+                            <constraint firstItem="rbF-gI-E7H" firstAttribute="centerX" secondItem="QVB-ID-mo4" secondAttribute="centerX" id="Otd-4c-QbQ"/>
+                            <constraint firstItem="fd3-HF-a1T" firstAttribute="top" secondItem="rbF-gI-E7H" secondAttribute="bottom" id="SGU-Mm-yNf"/>
+                            <constraint firstItem="LuM-hA-7Kt" firstAttribute="top" secondItem="srp-wK-OLb" secondAttribute="bottom" constant="20" id="SYH-kr-O9x"/>
+                            <constraint firstItem="3Xg-rI-a6B" firstAttribute="centerX" secondItem="Any-i3-QW6" secondAttribute="centerX" id="SnW-Ck-aid"/>
+                            <constraint firstItem="rbF-gI-E7H" firstAttribute="top" secondItem="QVB-ID-mo4" secondAttribute="bottom" constant="20" id="Vaa-Py-6sa"/>
+                            <constraint firstItem="fd3-HF-a1T" firstAttribute="centerX" secondItem="rbF-gI-E7H" secondAttribute="centerX" id="Vpk-tU-PsA"/>
+                            <constraint firstItem="U05-4o-rjB" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="YHj-HP-VYH"/>
+                            <constraint firstItem="srp-wK-OLb" firstAttribute="centerX" secondItem="3Xg-rI-a6B" secondAttribute="centerX" id="YdQ-zN-fQn"/>
+                            <constraint firstItem="LuM-hA-7Kt" firstAttribute="centerX" secondItem="srp-wK-OLb" secondAttribute="centerX" id="bqb-ip-0kP"/>
+                            <constraint firstItem="AH3-Pi-JJX" firstAttribute="centerX" secondItem="fd3-HF-a1T" secondAttribute="centerX" id="dAZ-wb-54R"/>
+                            <constraint firstItem="3F8-0P-g4U" firstAttribute="top" secondItem="LuM-hA-7Kt" secondAttribute="bottom" constant="60" id="ddO-E3-cvT"/>
+                            <constraint firstItem="3F8-0P-g4U" firstAttribute="centerX" secondItem="LuM-hA-7Kt" secondAttribute="centerX" id="oZP-8H-ANz"/>
+                            <constraint firstItem="QVB-ID-mo4" firstAttribute="top" secondItem="U05-4o-rjB" secondAttribute="bottom" id="tlA-mw-8cY"/>
+                            <constraint firstItem="QVB-ID-mo4" firstAttribute="centerX" secondItem="U05-4o-rjB" secondAttribute="centerX" id="y2Y-0S-KmJ"/>
                         </constraints>
                     </view>
                     <connections>
