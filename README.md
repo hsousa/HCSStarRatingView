@@ -4,7 +4,7 @@
 
 It supports all device resolutions and although it requires no images do render the stars (thanks <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>), you can provide custom ones if you so desire.
 
-<img src="https://raw.github.com/hsousa/HCSStarRatingView/master/Assets/demo.gif" width="288" height="394" />
+<img src="https://raw.github.com/hsousa/HCSStarRatingView/master/Assets/demo.gif" width="240" />
 
 ## Installation
 
