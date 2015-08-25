@@ -55,6 +55,11 @@ starRatingView.allowsHalfStars = YES;
 starRatingView.value = 2.5f;
 ```
 
+Enable `accurateHalfStars` to get more precise ratings (works with images too)!
+```objective-c
+starRatingView.accurateHalfStars = YES;
+```
+
 #### Custom images:
 
 Using custom images in `HCSStarRatingView` is as easy as setting a property. You only need to set `emptyStarImage` and `filledStarImage`, but you can also provide the half image to `halfStarImage`, if your design requires you to:
