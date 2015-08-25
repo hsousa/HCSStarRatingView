@@ -129,6 +129,13 @@
     }
 }
 
+- (void)setAccurateHalfStars:(BOOL)accurateHalfStars {
+    if (_accurateHalfStars != accurateHalfStars) {
+        _accurateHalfStars = accurateHalfStars;
+        [self setNeedsDisplay];
+    }
+}
+
 - (void)setEmptyStarImage:(UIImage *)emptyStarImage {
     if (_emptyStarImage != emptyStarImage) {
         _emptyStarImage = emptyStarImage;
@@ -162,14 +169,18 @@
 }
 
 - (void)_drawHalfStarImageWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
+    [self _drawAccurateHalfStarImageWithFrame:frame tintColor:tintColor progress:.5f];
+}
+
+- (void)_drawAccurateHalfStarImageWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor progress:(CGFloat)progress {
     UIImage *image = self.halfStarImage;
     if (image == nil) {
         // first draw star outline
         [self _drawStarImageWithFrame:frame tintColor:tintColor highlighted:NO];
         
         image = self.filledStarImage;
-        CGRect imageFrame = CGRectMake(0, 0, image.size.width * image.scale / 2.f, image.size.height * image.scale);
-        frame.size.width /= 2.f;
+        CGRect imageFrame = CGRectMake(0, 0, image.size.width * image.scale * progress, image.size.height * image.scale);
+        frame.size.width *= progress;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, imageFrame);
         UIImage *halfImage = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
         image = [halfImage imageWithRenderingMode:image.renderingMode];
@@ -188,6 +199,14 @@
 #pragma mark - Shape Drawing
 
 - (void)_drawStarShapeWithFrame:(CGRect)frame tintColor:(UIColor*)tintColor highlighted:(BOOL)highlighted {
+    [self _drawAccurateHalfStarShapeWithFrame:frame tintColor:tintColor progress:highlighted ? 1.f : 0.f];
+}
+
+- (void)_drawHalfStarShapeWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
+    [self _drawAccurateHalfStarShapeWithFrame:frame tintColor:tintColor progress:.5f];
+}
+
+- (void)_drawAccurateHalfStarShapeWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor progress:(CGFloat)progress {
     UIBezierPath* starShapePath = UIBezierPath.bezierPath;
     [starShapePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.62723 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.37309 * CGRectGetHeight(frame))];
     [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
@@ -203,34 +222,18 @@
     [starShapePath closePath];
     starShapePath.miterLimit = 4;
     
-    if (highlighted) {
+    CGFloat frameWidth = frame.size.width;
+    CGRect rightRectOfStar = CGRectMake(frame.origin.x + progress * frameWidth, frame.origin.y, frameWidth - progress * frameWidth, frame.size.height);
+    UIBezierPath *clipPath = [UIBezierPath bezierPathWithRect:CGRectInfinite];
+    [clipPath appendPath:[UIBezierPath bezierPathWithRect:rightRectOfStar]];
+    clipPath.usesEvenOddFillRule = YES;
+    
+    CGContextSaveGState(UIGraphicsGetCurrentContext()); {
+        [clipPath addClip];
         [tintColor setFill];
         [starShapePath fill];
     }
-    
-    [tintColor setStroke];
-    starShapePath.lineWidth = 1;
-    [starShapePath stroke];
-}
-
-- (void)_drawHalfStarShapeWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor {
-    
-    // first draw star outline
-    [self _drawStarShapeWithFrame:frame tintColor:tintColor highlighted:NO];
-    
-    UIBezierPath* starShapePath = UIBezierPath.bezierPath;
-    [starShapePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
-    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.37292 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.37309 * CGRectGetHeight(frame))];
-    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.02500 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.39112 * CGRectGetHeight(frame))];
-    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.30504 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.62908 * CGRectGetHeight(frame))];
-    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.20642 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.97500 * CGRectGetHeight(frame))];
-    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.78265 * CGRectGetHeight(frame))];
-    [starShapePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.50000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.02500 * CGRectGetHeight(frame))];
-    [starShapePath closePath];
-    starShapePath.miterLimit = 4;
-    
-    [tintColor setFill];
-    [starShapePath fill];
+    CGContextRestoreGState(UIGraphicsGetCurrentContext());
     
     [tintColor setStroke];
     starShapePath.lineWidth = 1;
@@ -252,7 +255,12 @@
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
         BOOL highlighted = (idx+1 <= ceilf(_value));
         if (_allowsHalfStars && highlighted && (idx+1 > _value)) {
-            [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
+            if (_accurateHalfStars) {
+                [self _drawAccurateStarWithFrame:frame tintColor:self.tintColor progress:_value - idx];
+            }
+            else {
+                 [self _drawHalfStarWithFrame:frame tintColor:self.tintColor];
+            }
         } else {
             [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:highlighted];
         }
@@ -274,7 +282,13 @@
         [self _drawHalfStarShapeWithFrame:frame tintColor:tintColor];
     }
 }
-
+- (void)_drawAccurateStarWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor progress:(CGFloat)progress {
+    if (self.shouldUseImages) {
+        [self _drawAccurateHalfStarImageWithFrame:frame tintColor:tintColor progress:progress];
+    } else {
+        [self _drawAccurateHalfStarShapeWithFrame:frame tintColor:tintColor progress:progress];
+    }
+}
 #pragma mark - Touches
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -315,8 +329,17 @@
     CGFloat cellWidth = self.bounds.size.width / _maximumValue;
     CGPoint location = [touch locationInView:self];
     CGFloat value = location.x / cellWidth;
-    if (_allowsHalfStars && value+.5f < ceilf(value)) {
-        value = floor(value)+.5f;
+    if (_allowsHalfStars) {
+        if (_accurateHalfStars) {
+            value = value;
+        }
+        else {
+            if (value+.5f < ceilf(value)) {
+                value = floor(value)+.5f;
+            } else {
+                value = ceilf(value);
+            }
+        }
     } else {
         value = ceilf(value);
     }
