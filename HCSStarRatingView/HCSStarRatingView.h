@@ -30,6 +30,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat spacing;
 @property (nonatomic) IBInspectable BOOL allowsHalfStars;
 @property (nonatomic) IBInspectable BOOL accurateHalfStars;
+@property (nonatomic) IBInspectable BOOL continuous;
 
 @property (nonatomic, strong) IBInspectable UIImage *emptyStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *halfStarImage;
