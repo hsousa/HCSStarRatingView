@@ -322,7 +322,10 @@
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return !self.isUserInteractionEnabled;
+    if ([gestureRecognizer.view isEqual:self]) {
+        return !self.isUserInteractionEnabled;
+    }
+    return YES;
 }
 
 - (void)_handleTouch:(UITouch *)touch {
