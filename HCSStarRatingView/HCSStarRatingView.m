@@ -39,6 +39,14 @@
 
 #pragma mark - Initialization
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self _customInit];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
