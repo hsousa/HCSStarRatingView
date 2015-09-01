@@ -21,7 +21,7 @@ use_frameworks!
 
 (...)
 
-pod 'HCSStarRatingView', '~> 2.0'
+pod 'HCSStarRatingView', '~> 1.4'
 ```
 
 and run `pod install`
