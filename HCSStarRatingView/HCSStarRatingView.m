@@ -61,6 +61,7 @@
     _maximumValue = 5;
     _value = 0;
     _spacing = 5.f;
+    _continuous = YES;
 }
 
 - (void)setNeedsLayout {
@@ -312,6 +313,9 @@
         [self resignFirstResponder];
     }
     [self _handleTouch:touch];
+    if (!_continuous) {
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event {
@@ -322,7 +326,10 @@
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return !self.isUserInteractionEnabled;
+    if ([gestureRecognizer.view isEqual:self]) {
+        return !self.isUserInteractionEnabled;
+    }
+    return YES;
 }
 
 - (void)_handleTouch:(UITouch *)touch {
@@ -343,7 +350,7 @@
     } else {
         value = ceilf(value);
     }
-    [self setValue:value sendValueChangedAction:YES];
+    [self setValue:value sendValueChangedAction:_continuous];
 }
 
 #pragma mark - First responder
