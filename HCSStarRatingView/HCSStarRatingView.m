@@ -337,7 +337,7 @@
     if ([gestureRecognizer.view isEqual:self]) {
         return !self.isUserInteractionEnabled;
     }
-    return YES;
+    return self.shouldBeginGestureRecognizerBlock ? self.shouldBeginGestureRecognizerBlock(gestureRecognizer) : NO;
 }
 
 - (void)_handleTouch:(UITouch *)touch {
