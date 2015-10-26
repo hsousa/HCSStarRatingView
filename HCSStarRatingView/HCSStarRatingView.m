@@ -301,18 +301,26 @@
 #pragma mark - Touches
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    [super beginTrackingWithTouch:touch withEvent:event];
-    if (![self isFirstResponder]) {
-        [self becomeFirstResponder];
+    if (self.isEnabled) {
+        [super beginTrackingWithTouch:touch withEvent:event];
+        if (![self isFirstResponder]) {
+            [self becomeFirstResponder];
+        }
+        [self _handleTouch:touch];
+        return YES;
+    } else {
+        return NO;
     }
-    [self _handleTouch:touch];
-    return YES;
 }
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    [super continueTrackingWithTouch:touch withEvent:event];
-    [self _handleTouch:touch];
-    return YES;
+    if (self.isEnabled) {
+        [super continueTrackingWithTouch:touch withEvent:event];
+        [self _handleTouch:touch];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
