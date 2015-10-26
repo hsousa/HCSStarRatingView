@@ -303,7 +303,7 @@
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     if (self.isEnabled) {
         [super beginTrackingWithTouch:touch withEvent:event];
-        if (![self isFirstResponder]) {
+        if (_shouldBecomeFirstResponder && ![self isFirstResponder]) {
             [self becomeFirstResponder];
         }
         [self _handleTouch:touch];
@@ -325,7 +325,7 @@
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     [super endTrackingWithTouch:touch withEvent:event];
-    if ([self isFirstResponder]) {
+    if (_shouldBecomeFirstResponder && [self isFirstResponder]) {
         [self resignFirstResponder];
     }
     [self _handleTouch:touch];
@@ -336,7 +336,7 @@
 
 - (void)cancelTrackingWithEvent:(UIEvent *)event {
     [super cancelTrackingWithEvent:event];
-    if ([self isFirstResponder]) {
+    if (_shouldBecomeFirstResponder && [self isFirstResponder]) {
         [self resignFirstResponder];
     }
 }
@@ -372,7 +372,7 @@
 #pragma mark - First responder
 
 - (BOOL)canBecomeFirstResponder {
-    return YES;
+    return _shouldBecomeFirstResponder;
 }
 
 #pragma mark - Intrinsic Content Size
