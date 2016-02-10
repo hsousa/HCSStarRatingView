@@ -2,7 +2,7 @@
 
 `HCSStarRatingView` is a `UIControl` subclass to easily provide users with a basic star rating interface.
 
-It supports all device resolutions and although it requires no images do render the stars (thanks <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>), you can provide custom ones if you so desire.
+It supports all device resolutions and although it requires no images to render the stars (thanks <a href="http://www.paintcodeapp.com" target=_blank>PaintCode</a>), you can provide custom ones if you so desire.
 
 <img src="https://raw.github.com/hsousa/HCSStarRatingView/master/Assets/demo.gif" width="240" />
 
