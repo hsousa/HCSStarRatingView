@@ -413,11 +413,13 @@
 }
 
 - (void)accessibilityIncrement {
-    self.value += self.allowsHalfStars ? .5f : 1.f;
+    CGFloat value = self.value + (self.allowsHalfStars ? .5f : 1.f);
+    [self setValue:value sendValueChangedAction:YES];
 }
 
 - (void)accessibilityDecrement {
-    self.value -= self.allowsHalfStars ? .5f : 1.f;
+    CGFloat value = self.value - (self.allowsHalfStars ? .5f : 1.f);
+    [self setValue:value sendValueChangedAction:YES];
 }
 
 @end
