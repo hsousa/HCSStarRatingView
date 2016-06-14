@@ -377,6 +377,12 @@
     [self setValue:value sendValueChangedAction:_continuous];
 }
 
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if ([self.delegate respondsToSelector:@selector(userFinishedRatingOnView:withRating:)]) {
+        [self.delegate userFinishedRatingOnView:self withRating:self.value];
+    }
+}
+
 #pragma mark - First responder
 
 - (BOOL)canBecomeFirstResponder {
