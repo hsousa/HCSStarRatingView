@@ -30,6 +30,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat minimumValue;
 @property (nonatomic) IBInspectable CGFloat value;
 @property (nonatomic) IBInspectable CGFloat spacing;
+@property (nonatomic) IBInspectable BOOL allowsUnselection;
 @property (nonatomic) IBInspectable BOOL allowsHalfStars;
 @property (nonatomic) IBInspectable BOOL accurateHalfStars;
 @property (nonatomic) IBInspectable BOOL continuous;
