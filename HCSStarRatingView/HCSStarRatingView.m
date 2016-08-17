@@ -30,6 +30,7 @@
     CGFloat _minimumValue;
     NSUInteger _maximumValue;
     CGFloat _value;
+    CGFloat _oldValue;
 }
 
 @dynamic minimumValue;
@@ -373,6 +374,20 @@
         }
     } else {
         value = ceilf(value);
+    }
+
+    switch (touch.phase) {
+        case UITouchPhaseBegan:
+            _oldValue = _value;
+            break;
+        case UITouchPhaseCancelled:
+        case UITouchPhaseEnded:
+            if (self.allowsUnselection && value == _oldValue) {
+                value = 0;
+            }
+            break;
+        default:
+            break;
     }
     [self setValue:value sendValueChangedAction:_continuous];
 }
