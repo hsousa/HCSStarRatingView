@@ -42,5 +42,9 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIImage *emptyStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *halfStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *filledStarImage;
+
+// If YES, then stars layout respects UIApplication.userInterfaceLayoutDirection
+@property (nonatomic) IBInspectable BOOL flipsInRTL;
+
 @end
 
