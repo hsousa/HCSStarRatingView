@@ -47,7 +47,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self _customInit];
@@ -361,10 +361,7 @@
     CGPoint location = [touch locationInView:self];
     CGFloat value = location.x / cellWidth;
     if (_allowsHalfStars) {
-        if (_accurateHalfStars) {
-            value = value;
-        }
-        else {
+        if (!_accurateHalfStars) {
             if (value+.5f < ceilf(value)) {
                 value = floor(value)+.5f;
             } else {
