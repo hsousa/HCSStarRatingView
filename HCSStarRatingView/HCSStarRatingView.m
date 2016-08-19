@@ -47,7 +47,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self _customInit];
@@ -161,6 +161,13 @@
     }
 }
 
+- (void)setFlipsInRTL:(BOOL)flipsInRTL {
+    if (_flipsInRTL != flipsInRTL) {
+        _flipsInRTL = flipsInRTL;
+        [self setNeedsDisplay];
+    }
+}
+
 - (BOOL)shouldUseImages {
     return (self.emptyStarImage!=nil && self.filledStarImage!=nil);
 }
@@ -268,7 +275,8 @@
     CGFloat cellWidth = (availableWidth / _maximumValue);
     CGFloat starSide = (cellWidth <= rect.size.height) ? cellWidth : rect.size.height;
     for (int idx = 0; idx < _maximumValue; idx++) {
-        CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*idx + 1, rect.size.height/2);
+        NSUInteger positionIndex = [self _shouldFlip] ? _maximumValue - idx - 1 : idx;
+        CGPoint center = CGPointMake(cellWidth*positionIndex + cellWidth/2 + _spacing*positionIndex + 1, rect.size.height/2);
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
         BOOL highlighted = (idx+1 <= ceilf(_value));
         if (_allowsHalfStars && highlighted && (idx+1 > _value)) {
@@ -282,6 +290,10 @@
             [self _drawStarWithFrame:frame tintColor:self.tintColor highlighted:highlighted];
         }
     }
+}
+
+- (BOOL)_shouldFlip {
+    return _flipsInRTL && [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft;
 }
 
 - (void)_drawStarWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor highlighted:(BOOL)highlighted {
@@ -299,6 +311,7 @@
         [self _drawHalfStarShapeWithFrame:frame tintColor:tintColor];
     }
 }
+
 - (void)_drawAccurateStarWithFrame:(CGRect)frame tintColor:(UIColor *)tintColor progress:(CGFloat)progress {
     if (self.shouldUseImages) {
         [self _drawAccurateHalfStarImageWithFrame:frame tintColor:tintColor progress:progress];
@@ -357,14 +370,14 @@
 }
 
 - (void)_handleTouch:(UITouch *)touch {
-    CGFloat cellWidth = self.bounds.size.width / _maximumValue;
     CGPoint location = [touch locationInView:self];
-    CGFloat value = location.x / cellWidth;
+    CGFloat value = _maximumValue * (location.x / self.bounds.size.width);
+    if ([self _shouldFlip]) {
+        value = _maximumValue - value;
+    }
+    
     if (_allowsHalfStars) {
-        if (_accurateHalfStars) {
-            value = value;
-        }
-        else {
+        if (!_accurateHalfStars) {
             if (value+.5f < ceilf(value)) {
                 value = floor(value)+.5f;
             } else {
