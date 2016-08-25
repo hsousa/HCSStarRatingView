@@ -386,7 +386,8 @@
 #pragma mark - Intrinsic Content Size
 
 - (CGSize)intrinsicContentSize {
-    CGFloat height = 44.f;
+    UIImage *emptyStarImage = self.emptyStarImage;
+    CGFloat height = emptyStarImage ? emptyStarImage.size.height : 44.f;
     return CGSizeMake(_maximumValue * height + (_maximumValue-1) * _spacing, height);
 }
 
