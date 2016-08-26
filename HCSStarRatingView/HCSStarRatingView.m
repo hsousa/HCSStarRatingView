@@ -267,6 +267,7 @@
     CGFloat availableWidth = rect.size.width - (_spacing * (_maximumValue - 1)) - 2;
     CGFloat cellWidth = (availableWidth / _maximumValue);
     CGFloat starSide = (cellWidth <= rect.size.height) ? cellWidth : rect.size.height;
+    if (self.emptyStarImage) starSide = self.emptyStarImage.size.height;
     for (int idx = 0; idx < _maximumValue; idx++) {
         CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*idx + 1, rect.size.height/2);
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
@@ -386,8 +387,10 @@
 #pragma mark - Intrinsic Content Size
 
 - (CGSize)intrinsicContentSize {
-    CGFloat height = 44.f;
-    return CGSizeMake(_maximumValue * height + (_maximumValue-1) * _spacing, height);
+    CGFloat imageSide = self.emptyStarImage.size.height;
+    CGFloat height = MAX(44.f, imageSide);
+    CGFloat itemWidth = imageSide ?: height;
+    return CGSizeMake(_maximumValue * itemWidth + (_maximumValue-1) * _spacing, height);
 }
 
 #pragma mark - Accessibility
