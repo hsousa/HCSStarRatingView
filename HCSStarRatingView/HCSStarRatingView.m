@@ -387,8 +387,10 @@
 #pragma mark - Intrinsic Content Size
 
 - (CGSize)intrinsicContentSize {
-    CGFloat height = MAX(44.f, self.emptyStarImage.size.height);
-    return CGSizeMake(_maximumValue * height + (_maximumValue-1) * _spacing, height);
+    CGFloat imageSide = self.emptyStarImage.size.height;
+    CGFloat height = MAX(44.f, imageSide);
+    CGFloat itemWidth = imageSide ?: height;
+    return CGSizeMake(_maximumValue * itemWidth + (_maximumValue-1) * _spacing, height);
 }
 
 #pragma mark - Accessibility
