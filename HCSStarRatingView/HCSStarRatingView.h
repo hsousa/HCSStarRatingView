@@ -39,6 +39,12 @@ IB_DESIGNABLE
 // Optional: if `nil` method will return `NO`.
 @property (nonatomic, copy) HCSStarRatingViewShouldBeginGestureRecognizerBlock shouldBeginGestureRecognizerBlock;
 
+@property (nonatomic, strong) IBInspectable UIColor *starBorderColor;
+@property (nonatomic) IBInspectable CGFloat starBorderWidth;
+
+@property (nonatomic, strong) IBInspectable UIColor *emptyStarColor;
+@property (nonatomic, strong) IBInspectable UIColor *filledStarColor;
+
 @property (nonatomic, strong) IBInspectable UIImage *emptyStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *halfStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *filledStarImage;
