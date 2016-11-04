@@ -62,6 +62,12 @@
     _value = 0;
     _spacing = 5.f;
     _continuous = YES;
+    _starBorderWidth = 1.0f;
+    _starBorderColor = self.tintColor;
+    _emptyStarColor = [UIColor clearColor];
+    _filledStarColor = self.tintColor;
+    
+    
     [self _updateAppearanceForState:self.enabled];
 }
 
@@ -161,6 +167,38 @@
     }
 }
 
+
+- (void)setFilledStarColor:(UIColor *)filledStarColor {
+    if(_filledStarColor != filledStarColor) {
+        _filledStarColor = filledStarColor;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setEmptyStarColor:(UIColor *)emptyStarColor {
+    if(_emptyStarColor != emptyStarColor) {
+        _emptyStarColor = emptyStarColor;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setStarBorderColor:(UIColor *)startBorderColor {
+    if(_starBorderColor != startBorderColor) {
+        _starBorderColor = startBorderColor;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setStarBorderWidth:(CGFloat)startBorderWidth {
+    if(startBorderWidth < 0){
+        startBorderWidth = 0;
+    }
+    
+    _starBorderWidth = startBorderWidth;
+    [self setNeedsDisplay];
+}
+
+
 - (BOOL)shouldUseImages {
     return (self.emptyStarImage!=nil && self.filledStarImage!=nil);
 }
@@ -245,15 +283,18 @@
     [clipPath appendPath:[UIBezierPath bezierPathWithRect:rightRectOfStar]];
     clipPath.usesEvenOddFillRule = YES;
     
+    [_emptyStarColor setFill];
+    [starShapePath fill];
+    
     CGContextSaveGState(UIGraphicsGetCurrentContext()); {
         [clipPath addClip];
-        [tintColor setFill];
+        [_filledStarColor setFill];
         [starShapePath fill];
     }
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
     
-    [tintColor setStroke];
-    starShapePath.lineWidth = 1;
+    [_starBorderColor setStroke];
+    starShapePath.lineWidth = _starBorderWidth;
     [starShapePath stroke];
 }
 
@@ -267,6 +308,8 @@
     CGFloat availableWidth = rect.size.width - (_spacing * (_maximumValue - 1)) - 2;
     CGFloat cellWidth = (availableWidth / _maximumValue);
     CGFloat starSide = (cellWidth <= rect.size.height) ? cellWidth : rect.size.height;
+    starSide = (self.shouldUseImages)? starSide : (starSide - _starBorderWidth);
+    
     for (int idx = 0; idx < _maximumValue; idx++) {
         CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*idx + 1, rect.size.height/2);
         CGRect frame = CGRectMake(center.x - starSide/2, center.y - starSide/2, starSide, starSide);
