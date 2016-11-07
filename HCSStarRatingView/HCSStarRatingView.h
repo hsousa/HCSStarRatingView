@@ -43,7 +43,6 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat starBorderWidth;
 
 @property (nonatomic, strong) IBInspectable UIColor *emptyStarColor;
-@property (nonatomic, strong) IBInspectable UIColor *filledStarColor;
 
 @property (nonatomic, strong) IBInspectable UIImage *emptyStarImage;
 @property (nonatomic, strong) IBInspectable UIImage *halfStarImage;
