@@ -30,12 +30,14 @@
     CGFloat _minimumValue;
     NSUInteger _maximumValue;
     CGFloat _value;
+    UIColor *_starBorderColor;
 }
 
 @dynamic minimumValue;
 @dynamic maximumValue;
 @dynamic value;
 @dynamic shouldUseImages;
+@dynamic starBorderColor;
 
 #pragma mark - Initialization
 
@@ -63,10 +65,7 @@
     _spacing = 5.f;
     _continuous = YES;
     _starBorderWidth = 1.0f;
-    _starBorderColor = self.tintColor;
     _emptyStarColor = [UIColor clearColor];
-    _filledStarColor = self.tintColor;
-    
     
     [self _updateAppearanceForState:self.enabled];
 }
@@ -167,34 +166,30 @@
     }
 }
 
-
-- (void)setFilledStarColor:(UIColor *)filledStarColor {
-    if(_filledStarColor != filledStarColor) {
-        _filledStarColor = filledStarColor;
-        [self setNeedsDisplay];
-    }
-}
-
 - (void)setEmptyStarColor:(UIColor *)emptyStarColor {
-    if(_emptyStarColor != emptyStarColor) {
+    if (_emptyStarColor != emptyStarColor) {
         _emptyStarColor = emptyStarColor;
         [self setNeedsDisplay];
     }
 }
 
-- (void)setStarBorderColor:(UIColor *)startBorderColor {
-    if(_starBorderColor != startBorderColor) {
-        _starBorderColor = startBorderColor;
+- (void)setStarBorderColor:(UIColor *)starBorderColor {
+    if (_starBorderColor != starBorderColor) {
+        _starBorderColor = starBorderColor;
         [self setNeedsDisplay];
     }
 }
 
-- (void)setStarBorderWidth:(CGFloat)startBorderWidth {
-    if(startBorderWidth < 0){
-        startBorderWidth = 0;
+- (UIColor *)starBorderColor {
+    if (_starBorderColor == nil) {
+        return self.tintColor;
+    } else {
+        return _starBorderColor;
     }
-    
-    _starBorderWidth = startBorderWidth;
+}
+
+- (void)setStarBorderWidth:(CGFloat)starBorderWidth {
+    _starBorderWidth = MAX(0, starBorderWidth);
     [self setNeedsDisplay];
 }
 
@@ -288,12 +283,12 @@
     
     CGContextSaveGState(UIGraphicsGetCurrentContext()); {
         [clipPath addClip];
-        [_filledStarColor setFill];
+        [tintColor setFill];
         [starShapePath fill];
     }
     CGContextRestoreGState(UIGraphicsGetCurrentContext());
     
-    [_starBorderColor setStroke];
+    [self.starBorderColor setStroke];
     starShapePath.lineWidth = _starBorderWidth;
     [starShapePath stroke];
 }
@@ -308,7 +303,7 @@
     CGFloat availableWidth = rect.size.width - (_spacing * (_maximumValue - 1)) - 2;
     CGFloat cellWidth = (availableWidth / _maximumValue);
     CGFloat starSide = (cellWidth <= rect.size.height) ? cellWidth : rect.size.height;
-    starSide = (self.shouldUseImages)? starSide : (starSide - _starBorderWidth);
+    starSide = (self.shouldUseImages) ? starSide : (starSide - _starBorderWidth);
     
     for (int idx = 0; idx < _maximumValue; idx++) {
         CGPoint center = CGPointMake(cellWidth*idx + cellWidth/2 + _spacing*idx + 1, rect.size.height/2);
