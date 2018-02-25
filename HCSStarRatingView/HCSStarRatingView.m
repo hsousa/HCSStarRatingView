@@ -371,6 +371,7 @@
 
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     [super endTrackingWithTouch:touch withEvent:event];
+    [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
     if (_shouldBecomeFirstResponder && [self isFirstResponder]) {
         [self resignFirstResponder];
     }
