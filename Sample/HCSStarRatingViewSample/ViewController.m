@@ -27,6 +27,8 @@
     starRatingView.emptyStarImage = [[UIImage imageNamed:@"heart-empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     starRatingView.filledStarImage = [[UIImage imageNamed:@"heart-full"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [starRatingView addTarget:self action:@selector(didChangeValue:) forControlEvents:UIControlEventValueChanged];
+    [starRatingView addTarget:self action:@selector(trackingEnded:) forControlEvents:UIControlEventEditingDidEnd];
+    
     [self.view addSubview:starRatingView];
     
     // auto layout
@@ -61,6 +63,10 @@
 
 - (IBAction)didChangeValue:(HCSStarRatingView *)sender {
     NSLog(@"Changed rating to %.1f", sender.value);
+}
+
+- (IBAction)trackingEnded:(HCSStarRatingView *)sender {
+    NSLog(@"Final value %.1f", sender.value);
 }
 
 @end
