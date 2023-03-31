@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "HCSStarRatingView",
-    platforms: [.iOS(.v7)],
+    platforms: [.iOS(.v8)],
     products: [
         .library(name: "HCSStarRatingView", targets: ["HCSStarRatingView"])
     ],
@@ -12,7 +12,7 @@ let package = Package(
         .target(
             name: "HCSStarRatingView",
             path: "HCSStarRatingView",
-            exclude: ["Info.plist"],
+            exclude: ["Info.plist"]
         )
     ]
 )
