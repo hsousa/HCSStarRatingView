@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "HCSStarRatingView",
-    platforms: [.iOS(.v8)],
+    platforms: [.iOS(.v11)],
     products: [
         .library(name: "HCSStarRatingView", targets: ["HCSStarRatingView"])
     ],
